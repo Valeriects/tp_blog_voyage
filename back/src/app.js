@@ -1,9 +1,11 @@
 import express from 'express';
 import "dotenv/config"; //pour avoir accès aux variables d'environnement de .env
 import cors from "cors";
+import path from "path";
 
 
 import router from "./router/index.routes.js";
+
 
 
 const app = express();
@@ -11,6 +13,9 @@ const app = express();
 const PORT = process.env.LOCAL_PORT || 8000;
 //ou 
 // const { LOCAL_PORT } = process.env;
+
+app.use('/img', express.static(path.join(process.cwd(), "/public/assets/images/")));
+
 
 app.use(cors({
     origin: "http://localhost:5173",

@@ -33,5 +33,27 @@ On va ajouter ceci:
 ![](./back/public/assets/images/arborescence.png)
     
 
-## Dans le dossier client 
-on met un .env et un .gitignore
+## Partie du dossier CLIENT
+A la racine du projet, et dans le termnial, on fait quelques lignes de commande:
+```bash 
+  npm create vite@latest
+```
+  on nommera le dossier `client` avec REACT et javascript + swc
+  on entre dans le répertoire `client`
+  et on fait:
+  ```bash
+  npm install
+  npm install react-router-dom react-redux @reduxjs/toolkit sass
+  ```
+
+  installation de fontawesome:
+  ```bash
+   npm i --save @fortawesome/fontawesome-svg-core
+   npm i --save @fortawesome/react-fontawesome@latest
+
+   npm i --save @fortawesome/free-solid-svg-icons
+
+   npm i --save @fortawesomefree-brands-svg-icons
+
+  ```
+  pour icone du footer le brands

@@ -1,0 +1,106 @@
+@use "variables" as *;
+
+html {
+    font-size: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url($bgImg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-size: 1.8rem;
+}
+
+header, footer {
+    background-color: $bgDark;
+}
+
+a {
+    color: $colorLight;
+    text-decoration: none;;
+}
+
+.hidden {
+    display: none;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    
+    .logoTitle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        img {
+            max-width: 6rem;
+        }
+        
+        span {
+            margin-left: 1rem;
+            font-size: 3rem;
+            display: inline-block;
+        }
+    }
+    
+    #menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        right: 50px;
+        background-color: $bgDark;
+        border: 1px solid $bgDark;
+
+        a {
+            text-transform: uppercase;
+            cursor: pointer;
+            padding: 1rem;
+
+            &:hover {
+                background-color: $bgLight;
+                color: $colorDark;
+            }
+        }
+    }
+
+    .menuBurger {
+        color: $colorLight;
+        font-size: 4rem;
+        padding: .5rem;
+    }
+
+
+}
+
+
+footer {
+    // height: 3rem;
+    color: $colorLight;
+    text-align: center;
+
+    .navFooter {
+        
+        a {
+            font-size: 5rem;
+            margin: 0 1rem;
+            display: inline-block;
+
+            
+            // .iconeFooter {
+                // width: 100%;
+                // font-size: 2rem;
+                // width: 5rem;
+            // }
+        }
+        
+    }
+}

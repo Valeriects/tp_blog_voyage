@@ -2,8 +2,11 @@
 
 ## Tâche du jour:
 - faire routes pour les différentes pages de front
+- continuer le README.md du projet
+- régler le problème affichage de la date de publication
 
 ## TODO:
+- faire un powerpoint de présentation pour lundi
 
 ### Pages:
 - header (bouton deconnexion dedans actif que si on est connecté)

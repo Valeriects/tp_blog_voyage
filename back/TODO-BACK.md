@@ -1,6 +1,7 @@
 # A FAIRE:
 
 ## Tâche du jour:
+- faire liens url images de la bdd 
 - middlewarre de sécurisation des routes (regarder pour le jeton: `jsonwebtoken`)
 
 ## TODO:
