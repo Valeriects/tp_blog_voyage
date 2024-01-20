@@ -21,8 +21,6 @@ app.use(cors({
     origin: "http://localhost:5173",
 }));
 
-//pour récupérer et convertir les données récupérées par le formulaire, afin de les manipuler en js sous forme d'objet
-app.use(express.urlencoded({ extended: true })); //à enlever lorsque j'aurais un front
 
 // on envoi des données au format json vers le back, pour les "traduire" dans le'objet body, il faut mettre dans le back :
 app.use(express.json()); 
