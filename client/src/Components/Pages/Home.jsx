@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
+import formatDate from "../../utils/formatDate.js";
 
 function Home() {
 
@@ -8,34 +10,33 @@ function Home() {
 
     // console.log(getListArticle.articles);
     return (
-        <main id="home">
-            <section id="title">
-                <h1>Bienvenue sur le blog de voyage culinaire</h1>
-            </section>
+        <main className="home">
 
-            <section id="listArticle">
+
+            <section className="listArticle">
+            <h1>Bienvenue sur le blog de voyage culinaire</h1>
                 <h2>Derniers articles parus :</h2>
 
                 {getListArticle.map((item) => (
                     <article key={item.id} >
 
-                        <h3>{item.title} de  {item.username}
+                        <h3>{item.title} <span> écrit par : {item.username}</span> </h3>
+                        <div>
                             <span>Catégorie: {item.cat_name}</span>
-                            <span>{Date(item.date_publication)}</span>
-                        </h3>
+                            <span>{formatDate(item.date_publication)}</span>
+                        </div>
 
                         <figure>
 
                             <img src={`http://localhost:8000/img/${item.src}`} alt={item.alt}/>
-                            <figcaption>le content ici ?</figcaption>
+                            <figcaption>{item.alt}</figcaption>
 
                         </figure>
 
-                        <p>{item.content}</p>
+                        <p className="ellipsis">{item.content}</p>
 
-                        <a href="">voir plus...</a>
-
-                        <FontAwesomeIcon icon={faSquarePlus} />
+                        <Link to={`liste-des-articles/${item.id}`}><FontAwesomeIcon icon={faSquarePlus} /></Link>
+                        
                     </article>
                     
                 ))}

@@ -4,7 +4,9 @@ import { Fragment } from "react";
 // import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchArticles } from './store/slices/articles.js';
+import { fetchArticlesAll } from './store/slices/articles.js';
 import {fetchPictures} from './store/slices/pictures.js';
+import {fetchCategories} from './store/slices/categories.js';
 import Header from "./Components/Containers/Header.jsx";
 import Router from "./Components/Routers/Router.jsx";
 import Footer from "./Components/Containers/Footer.jsx";
@@ -19,7 +21,9 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchArticles());
+    dispatch(fetchArticlesAll());
     dispatch(fetchPictures());
+    dispatch(fetchCategories());
   }, []);
 
 

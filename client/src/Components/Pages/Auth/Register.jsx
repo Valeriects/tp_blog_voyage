@@ -1,29 +1,70 @@
 import { useEffect, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
+    //avec useRef()
     const nameRef = useRef();
     const pwdRef = useRef();
+
+    const navigate = useNavigate(); //pour la redirection
 
     useEffect(() => {
         nameRef.current.focus();
     }, []);
 
 
+        //on fait la soumission du formulaire
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        const username = nameRef.current.value;
+        const password = pwdRef.current.value;
+
+
+        const response = await fetch('http://localhost:8000/api/v1/connection/register', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username,
+                password
+            })
+        });
+
+        // console.log(response);
+        
+        if (response.ok) {
+            const resJson = await response.json();
+            console.log("resJson: ", resJson);
+                
+            navigate('/authentification');
+        }
+
+    };
+
+
+
     return (
 
-        <main id="register">
-            <form action="" method="post">
+        <main className="formulaire">
+            <form onSubmit={submitHandler}>
                 <fieldset>
-                    <legend>Connectez-vous</legend>
+                    <legend>Créez votre compte</legend>
 
-                    <label htmlFor="pseudo">Votre pseudo&nbsp;:</label>
-                    <input id="pseudo" ref={nameRef} name="pseudo" type="text" placeholder="Votre pseudo ici" />
+                    <label htmlFor="username">Votre pseudo&nbsp;:
+                        <input id="username" ref={nameRef} name="username" type="text" placeholder="Votre pseudo ici" />
+                    </label>
 
-                    <label htmlFor="pwd">Votre mot de passe&nbsp;:</label>
-                    <input id="pwd" ref={pwdRef} name="pwd" type="text" placeholder="votre mot de passe ici" />
+
+                    <label htmlFor="password">Votre mot de passe&nbsp;:
+                        <input id="password" ref={pwdRef} name="password" type="password" placeholder="votre mot de passe ici" />
+                    </label>
 
                     <button type="submit">Validez</button>
                 </fieldset>
+
+                <Link className="lienInscription" to="/authentification">Se connecter</Link>
+
 
             </form>
         </main>

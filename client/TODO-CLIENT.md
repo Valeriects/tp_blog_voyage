@@ -9,6 +9,7 @@
 - faire un powerpoint de présentation pour lundi
 
 ### Pages:
+- page 404 du site
 - header (bouton deconnexion dedans actif que si on est connecté)
 - footer
 - accueil: (voir les dfifférents articles tronquésn, avec minitatures, titre, date-publication)

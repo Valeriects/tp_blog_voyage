@@ -1,29 +1,29 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareFacebook, faSquareTwitter, faSquareGithub } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 function Footer() {
     return (
         <footer>
-            <p>Copyright - 2024</p>
 
             <nav id="navFooter">
                 
                 {/* <a className="picto fa-solid fa-rss"></a> */}
-                <a href="https://www.facebook.com">
+                <Link to="https://www.facebook.com">
                     <FontAwesomeIcon className="iconeFooter" icon={faSquareFacebook} />
                     
-                </a>
-                <a href="https://twitter.com">
+                </Link>
+                <Link to="https://twitter.com">
 
                     <FontAwesomeIcon className="iconeFooter" icon={faSquareTwitter} />
-                </a>
-                <a href="https://github.com">
+                </Link>
+                <Link to="https://github.com">
 
                     <FontAwesomeIcon className="iconeFooter" icon={faSquareGithub} />
-                </a>
-
-
+                </Link>
                 
             </nav>
+            
+            <p>Copyright - 2024</p>
         </footer>
     )
 }
