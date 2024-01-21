@@ -3,13 +3,14 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import ListArticles from "../Pages/Articles/ListArticles";
-import Category from "../Pages/BackOffice/Category";
 import DetailArticle from "../Pages/Articles/DetailArticle";
-import Article from "../Pages/BackOffice/Articles";
-import ModifArticle from "../Pages/BackOffice/ArticleBack/ModifArticle";
+import Article from "../Pages/BackOffice/ListArticlesBack";
+// import ModifArticle from "../Pages/BackOffice/ArticleBack/ModifArticle";
 import UserDash from "../Pages/Dashboard/UserDash";
 import BackOffice from "../Pages/BackOffice/BackOffice";
-import UserBack from "../Pages/BackOffice/UsersBack";
+import ModifCategory from "../Pages/BackOffice/CategoryBack/ModifCategory";
+import AjoutCategory from "../Pages/BackOffice/CategoryBack/AddCategory";
+import DeleteCategory from "../Pages/BackOffice/CategoryBack/DeleteCategory";
 
 
 function Router() {
@@ -36,19 +37,21 @@ function Router() {
             {/* Routes admin */}
             <Route path="/admin" element={<BackOffice />} />
             
-            <Route path="/admin/categorie" element={<Category />} />
+            <Route path="/admin/ajout-categorie" element={<AjoutCategory />} />
+            <Route path="/admin/modifier-categorie/:id" element={<ModifCategory />} />
 
-            <Route path="/admin/liste-membre" element={<UserBack />} />
+            <Route path="/admin/supprimer-categorie/:id" element={<DeleteCategory />} />
+
+
+            <Route path="/admin/modifier-membre/:id" element={<Article />} />
             
-            <Route path="/admin/liste-membre/modify:id" element={<UserBack />} />
+            {/* <Route path="/admin/modifier-role/:id" element={<Article />} /> */}
             
-            <Route path="/admin/liste-membre/delete/:id" element={<UserBack/>} />
+            <Route path="/admin/modifier-image/:id" element={<Article/>} />
             
-            <Route path="/admin/article" element={<Article />} />
+            {/* <Route path="/admin/modifier-article/:id" element={<ModifArticle />} /> */}
             
-            <Route path="/admin/article/modifier/:id" element={<ModifArticle />} />
-            
-            <Route path="/admin/article/supprimer/:id" element={<Article/>} />
+            {/* <Route path="/admin/modifier-comment/:id" element={<Article/>} /> */}
 
         </Routes>
     )

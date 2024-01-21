@@ -11,10 +11,10 @@ const fetchCategories = createAsyncThunk(
     }
 );
 
-const fetchAddCategory = createAsyncThunk(
-    "category/fetchAddCategory",
+const fetchDeleteCategory = createAsyncThunk(
+    "category/fetchDeleteCategory",
     async () => {
-        const response = await fetch("http://localhost:8000/api/v1/category");
+        const response = await fetch("http://localhost:8000/api/v1/category/delete/${id}");
 
         const data = await response.json();
 
@@ -26,7 +26,7 @@ const fetchAddCategory = createAsyncThunk(
 const initialState = {
     list: [],
     isLoading: false,
-    isError: false
+    isError: false,
 }
 
 const categorySlice = createSlice({
@@ -46,23 +46,23 @@ const categorySlice = createSlice({
                 state.isError = action.error.message
                 state.isLoading = false;
             })
-            // .addCase(fetchAddCategory.pending, (state) => {
-            //     state.isLoading = true;
-            // })
-            // .addCase(fetchAddCategory.fulfilled, (state, action) => {
-            //     state.list = action.payload
-            //     state.isLoading = false;
-            //     // console.log(action.payload);
-            // })
-            // .addCase(fetchAddCategory.rejected, (state, action) => {
-            //     state.isError = action.error.message
-            //     state.isLoading = false;
-            // })
+            .addCase(fetchDeleteCategory.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(fetchDeleteCategory.fulfilled, (state, action) => {
+                state.list = action.payload
+                state.isLoading = false;
+                // console.log(action.payload);
+            })
+            .addCase(fetchDeleteCategory.rejected, (state, action) => {
+                state.isError = action.error.message
+                state.isLoading = false;
+            })
     }
 })
 
 
 
 
-export { fetchCategories, fetchAddCategory};
+export { fetchCategories, fetchDeleteCategory};
 export default categorySlice.reducer;

@@ -1,16 +1,25 @@
 // import { useSelector } from '@reduxjs/toolkit';
 // import { Link } from 'react-router-dom';
 import { useState } from "react";
-import TableUsers from './ListeUsers';
+import TableUsers from './ListeUsersBack';
+import TableImages from "./ListPicturesBack";
+import TableCategories from "./ListCategoryBack";
 // import ModifArticle from "./ArticleBack/ModifArticle.jsx";
 function BackOffice() {
     console.log('hello');
     // const {listUsers} = useSelector((state) => state.user);
     const [listUsersOpen, setListUsersOpen] = useState(false);
+    const [listImgOpen, setListImgOpen] = useState(false);
+    const [listCategoryOpen, setListCategoryOpen] = useState(false);
 
     function toggleListUsers() {
-        console.log("ouvet");
         setListUsersOpen(!listUsersOpen);
+    }
+    function toggleListImg() {
+        setListImgOpen(!listImgOpen);
+    }
+    function toggleListCategory() {
+        setListCategoryOpen(!listCategoryOpen);
     }
 
     return (
@@ -23,30 +32,30 @@ function BackOffice() {
             <ul>
                 <li>
                     
-                <button to="liste-membre" onClick={toggleListUsers}>Membres</button>
+                <button onClick={toggleListUsers}>Membres</button>
                 </li>
 
                 <li>
 
-                <button to="liste-article">Articles</button>
+                <button >Articles</button>
                 </li>
 
                 <li>
-                <button to="liste-category">Categories</button>
-
-                </li>
-
-                <li>
-                <button to="liste-role">Roles des membres</button>
+                <button onClick={toggleListCategory}>Categories</button>
 
                 </li>
 
                 <li>
-                <button to="liste-image">Images des articles</button>
+                <button >Roles des membres</button>
+
                 </li>
 
                 <li>
-                <button to="liste-commentaire">Commentaires des articles</button>
+                <button onClick={toggleListImg}>Images des articles</button>
+                </li>
+
+                <li>
+                <button >Commentaires des articles</button>
                  </li>
             </ul>
 
@@ -54,10 +63,15 @@ function BackOffice() {
             {/* <button >Articles</button> */}
 
             {/* <ModifArticle /> */}
-            {listUsersOpen &&
             <div id="userBack">
-                <TableUsers/>
-            </div>}
+
+                {listUsersOpen && <TableUsers />}
+
+                {listImgOpen && <TableImages/>}
+                
+                {listCategoryOpen && <TableCategories/>}
+                
+            </div>
                 
         </main>
    )

@@ -32,7 +32,7 @@ const upCategory = async (req, res) => {
 
         const patchCategory = await Query.runByParams(query, [req.body.cat_name, req.params.id]);
 
-        res.json({ msg: "Modification d'une catégorie effectuée", patchCategory});
+        res.json({ msg: "Modification d'une catégorie effectuée", cat_name: req.body.cat_name});
 
     } catch (err) {
         console.log(err);
