@@ -2,10 +2,14 @@
 
 ## Tâche du jour:
 - faire routes pour les différentes pages de front
+- continuer le README.md du projet
+- régler le problème affichage de la date de publication
 
 ## TODO:
+- faire un powerpoint de présentation pour lundi
 
 ### Pages:
+- page 404 du site
 - header (bouton deconnexion dedans actif que si on est connecté)
 - footer
 - accueil: (voir les dfifférents articles tronquésn, avec minitatures, titre, date-publication)

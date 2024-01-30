@@ -6,9 +6,11 @@ const router = Router();
 
 router.post('/', userLogin);
 
-router.post('/inscription', userRegister);
+router.post('/register', userRegister);
 
+//pas besoin ici ?
 router.get('/deconnection', userDeco);
+
 
 
 

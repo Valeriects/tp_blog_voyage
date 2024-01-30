@@ -1,14 +1,16 @@
 import { Router } from "express";
 
-import { getUsersAll, getOneUserById } from "../controller/users.js";
+import { getUsersAll, upUser, deleteUser } from "../controller/users.js";
 
 const router = Router();
 
 // afficher tous les users
-router.use('/', getUsersAll);
+router.get('/', getUsersAll);
 
-// afficher un seul user
-router.use('/:id', getOneUserById);
+
+router.patch('/modify/:id', upUser);
+
+router.delete('/delete/:id', deleteUser)
 
 
 export default router;

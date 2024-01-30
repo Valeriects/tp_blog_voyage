@@ -1,0 +1,484 @@
+@use "variables" as *;
+//le mixin où on défini un paramètre pour personnaliser encore plus
+@mixin display($param) {
+    display: flex;
+    flex-direction: $param;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url($bgImg);
+    background-color: $bg-clair;
+    background-size: cover;
+    background-position: center;
+    font-size: 1.8rem;
+    font-family: $fontFamilyGabarito;
+    // line-height: 1.5rem;
+
+}
+
+//la div où on met les composants
+#root {
+    //on fait display flex avec column et le justify, afin de pouvoir regler la hauteur
+    height: 100vh;
+    @include display(column);
+    justify-content: space-between;
+    
+}
+
+img {
+    max-width: 100%;
+}
+
+figure {
+    margin: 0;
+}
+
+h1, h2, h3 {
+    font-family: $fontFamilyIstokWeb;
+    font-weight: 700;
+    font-style: italic;
+    text-align: center;
+    margin: 0;
+}
+
+header, footer {
+    background-color: $bgDark;
+}
+
+a {
+    text-decoration: none;
+}
+
+.hidden {
+    display: none;
+}
+
+
+header {
+    @include display(row);
+    justify-content: space-between;
+    font-family: $fontFamilyGluten;
+    font-weight: 700;
+    font-style: normal;
+    
+    .logoTitle {
+        @include display(row);
+        justify-content: center;
+        align-items: center;
+        
+        img {
+            max-width: 6rem;
+        }
+        
+        span {
+            margin-left: 1rem;
+            font-size: 3rem;
+            display: inline-block;
+            color: $colorLight;
+        }
+    }
+    
+    #menu {
+        @include display(column);
+        position: absolute;
+        top: 0;
+        right: 50px;
+        background-color: $bgDark;
+        border: 1px solid $bgDark;
+
+        a, .deco  {
+            text-transform: uppercase;
+            cursor: pointer;
+            padding: 1rem;
+            color: $colorLight;
+
+            &:hover {
+                background-color: $bgLight;
+                color: $colorDark;
+                font-weight: bold;
+            }
+        }
+
+        .deco {
+            color: $colorLight;
+            font-family: $fontFamilyGluten;
+            font-weight: bold;
+            font-size: 1.8rem;
+        }
+    }
+
+    button {
+
+        border: none;
+        background-color: $colorTransparent;
+
+        .menuBurger {
+            color: $colorLight;
+            font-size: 4rem;
+            padding: .5rem;
+            cursor: pointer;
+
+            &:hover {
+                color: $bgLight;
+            }
+        }
+    }
+}
+
+
+.home {
+    h1 {
+        text-align: center;
+        border: 1px solid $bgDark;
+        border-radius: .3rem;
+        padding: 1rem;
+        background-color: $bg-clair;
+        margin-bottom: 2rem;
+        width: 100%;
+        // margin: auto;
+    }
+    .listArticle {
+
+        max-width: 90%;
+        margin: auto;
+        background-color: $bgLightOpacity;
+        padding: 1rem;
+
+        .divInputSearch {
+            width: 100%;
+        
+            .inputSearch {
+                width: 100%;
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        article {
+            border: 1px solid $colorDark;
+            border-radius: .3rem;
+            padding: 1rem;
+            background-color: $bg-clair;
+            margin-bottom: 3rem;
+
+            h2, h3, span, p { 
+
+                &::first-letter {
+                    text-transform: uppercase !important;
+                }                
+            }
+
+            span { 
+                font-size: 1.6rem;
+            }
+
+            div {
+                @include display(column);
+                justify-content: space-evenly;
+                margin-bottom: 1rem;
+            }
+
+            figure {
+                position: relative;
+
+                figcaption {
+                    position: absolute;
+                    inset: 0;
+                    padding: 2rem;
+                    background-color: $bgLightOpacity;
+                    opacity: 0;
+                    transition: opacity 1s;
+                }
+
+                &:hover figcaption {
+                    opacity: 1;
+                }
+            }
+
+            .ellipsis {
+                max-width: 500px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            a {
+                color: $colorDark;
+                font-size: 3rem;
+            }
+
+        }
+    }
+
+}
+
+#dashboard {
+    background-color: $bgLightOpacity;
+    margin: 2rem;
+}
+#admin {
+    background-color: $bgLight;
+    height: 100%;
+}
+
+#dashboard, #admin {
+    color: $colorDark;
+    padding: 1rem;
+
+    div, ul {
+        @include display(row);
+        flex-wrap: wrap;
+        gap: 2rem;
+
+        a:not .tdIcone a {
+            color: $colorDark;
+            border: 1px solid $bgDark;
+            border-radius: .3rem;
+            padding: 1rem;
+            cursor: pointer;
+    
+            &:hover {
+                color: $colorLight;
+                background-color: $bgDark;
+            }
+        }
+
+        li {
+            // text-decoration: none;  
+            list-style: none;
+
+            button {
+                padding: 1rem;
+            }
+        }
+    }
+    
+
+}  
+
+#userBack {
+    padding: 2rem, 0;
+    max-height: 70%;
+    overflow-y: auto;
+
+    a:not .tdIcone a {
+        color: $colorDark;
+        font-weight: bold;
+        border: 1px solid $colorDark;
+        padding: .7rem;
+        border-radius: .3rem;
+        margin: 2rem;
+    }
+
+    table {
+        display: block;
+        background-color: $grey;
+        color: $colorLight;
+        border-collapse: collapse;
+        overflow-x: scroll;
+
+        border: 2px solid $colorDark;
+        max-width: 95%;
+        margin: auto;
+        
+        th, td, tr {
+            border: 1px solid $colorLight;
+            padding: 1rem;
+        }
+        
+        td:nth-child(7), th:nth-child(7) {
+            max-width: 150px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .tdIcone {
+            @include display(column);
+            justify-content: space-around;
+            align-items: center;
+            gap: 1rem;   
+
+            .iconeTable {
+                color: $colorLight;
+                font-size: 4rem;
+            }
+
+            button {
+                background-color: $colorTransparent;
+                border: none;
+            }
+        }
+
+
+    }
+}
+
+
+form {
+    width: 90%;
+    margin: auto;
+    padding: 2rem;
+    background-color: $bgDarkOpacity;
+    border-radius: .5rem;
+    color: $colorLight;
+    
+    
+    fieldset {
+        @include display(column);
+        padding: 3rem 0 5rem 0;
+        gap: 2rem;
+        justify-content: space-evenly;
+        align-items: center;
+        
+        legend {
+            font-family: $fontFamilyGluten;
+            font-weight: bold;
+            font-size: 2.5rem;
+        }
+        
+        label, button {
+            width: 90%;
+        }
+        
+        input {
+            width: 100%;
+            padding: 1rem;
+            margin: 2rem, 0;
+        }
+
+        button {
+            background-color: $bgLight;
+            border: none;
+            padding: 1rem;
+
+            &:hover {
+                background-color: $colorDark;
+                color: $colorLight;
+                cursor: pointer;
+            }
+        }
+    }
+    
+    a {
+        margin-top: 2rem;
+        color: $colorLight;
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+
+footer {
+    color: $colorLight;
+    text-align: center;
+
+    #navFooter {
+        padding-top: 1rem;
+        
+        a {
+            margin: 0 1rem;
+
+            .iconeFooter {
+                font-size: 3rem;
+                color: $colorLight;                        
+            }
+        }        
+    }
+
+    p {
+        margin: .5rem;
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+
+
+    .listArticle {
+        @include display(row);
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        h1, h2, h3 {
+            width: 100%;
+        }
+        .divInputSearch {
+
+            text-align: center;
+
+            .inputSearch {
+                width: 50% !important;
+            }
+        }
+
+        article {
+            width: 30%;
+            margin: 2rem;
+        }
+    }
+
+    .home {
+
+    #detailArticle {
+        article {
+            width: 100%;
+            margin: 1rem;
+            padding: 2rem;
+
+            figure {
+                width: 45%;
+                float: left;
+                margin-right: 2rem;
+            }
+
+            div {
+                @include display(row);
+                justify-content: space-between;
+
+                span {
+                    display: inline-block;
+                    width: 30%;
+                }
+
+                span:last-child {
+                    text-align: right;
+                }
+            }
+        }
+    }  
+  }
+
+    form {
+        width: 35%;
+    }
+
+    footer {
+        @include display(row);
+        justify-content: center;
+        align-items: center;
+
+        #navFooter {
+            padding-top:0;
+            a {
+                .iconeFooter {
+                    font-size: 2rem;
+                    color: $colorLight;
+                }
+            }
+        }
+    }
+}
