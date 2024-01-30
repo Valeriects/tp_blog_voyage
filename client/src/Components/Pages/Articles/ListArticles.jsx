@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
@@ -7,19 +8,29 @@ import formatDate from "../../../utils/formatDate.js";
 
 
 function ListArticles() {
+    const [search, setSearch] = useState('');
+    
     const { listAll } = useSelector((state) => state.article);
     // const { listPictures } = useSelector((state) => state.picture);
 
-     
+    const searchListAll = listAll.filter(article => article.title.includes(search));     
 
+    console.log(searchListAll)
     return (
         <main className="home">
 
 
+            
             <section className="listArticle">
                 <h1>Liste des articles déjà parus:</h1>
+
+                <div className="divInputSearch">
+                    <input className="inputSearch" type='text' placeholder='Votre recherche...' onChange={(e) => setSearch(e.target.value)}></input>
+
+                </div>
                 
-            {listAll.map((item) => (
+                
+            {searchListAll.map((item) => (
                 <article key={item.id}>
                 
                     <h2>{item.title}</h2>

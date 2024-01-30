@@ -13,8 +13,8 @@ const fetchCategories = createAsyncThunk(
 
 const fetchDeleteCategory = createAsyncThunk(
     "category/fetchDeleteCategory",
-    async () => {
-        const response = await fetch("http://localhost:8000/api/v1/category/delete/${id}");
+    async (id) => {
+        const response = await fetch(`http://localhost:8000/api/v1/category/delete/${id}`);
 
         const data = await response.json();
 

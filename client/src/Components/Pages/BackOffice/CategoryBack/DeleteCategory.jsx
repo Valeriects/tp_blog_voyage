@@ -9,15 +9,15 @@ function DeleteCategory() {
     
     const getCategory = useSelector((state) => state.category.list.find(article => article.id === Number(id)));
 
-    const handleDelete = () => {
+    const handleDelete = (id) => {
         console.log("tes dans le handleDelete");
-        dispatch(fetchDeleteCategory());
+        dispatch(fetchDeleteCategory(id));
         navigate("/admin");
     }
     
     console.log(getCategory.id);
     // async function deleteCategory() {
-    //     const response = await fetch(`http://localhost:8000/api/v1/category/delete/${id}`, {
+    //     const response = await fetch(`http://localhost:8000/api/v1/category/delete/${getCategory.id}`, {
     //         method: "DELETE",
     //         headers: {
     //             "Content-Type": "application/json",
@@ -33,7 +33,8 @@ function DeleteCategory() {
 
                     <p>{getCategory.cat_name}</p>
 
-                    <button onClick={handleDelete} type="submit">Supprimer</button>
+                    {/* <button onClick={handleDelete} type="submit">Supprimer</button> */}
+                    <button onClick={handleDelete(getCategory.id)} type="submit">Supprimer</button>
                 </article>
 
         </>

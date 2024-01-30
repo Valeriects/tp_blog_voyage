@@ -1,17 +1,22 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+// import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 import formatDate from "../../utils/formatDate.js";
 
 function Home() {
+    // const [search, setSearch] = useState('');
 
     const getListArticle = useSelector((state) => state.article.list);
+    // const getListArticle = useSelector((state) => state.article.list.filter(item => item.title.includes(search)));
+    
 
     // console.log(getListArticle.articles);
     return (
         <main className="home">
 
+        {/* <input type='text' placeholder='Votre recherche' onChange={(e) => setSearch(e.target.value)}></input> */}
 
             <section className="listArticle">
             <h1>Bienvenue sur le blog de voyage culinaire</h1>

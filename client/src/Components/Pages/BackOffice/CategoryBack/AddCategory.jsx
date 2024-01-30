@@ -1,10 +1,10 @@
 
 import { useRef, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function AjoutCategory() {
     const nameCatRef = useRef();   
-  
+    const navigate = useNavigate();
 
     useEffect(() => {
         nameCatRef.current.focus();
@@ -28,10 +28,10 @@ function AjoutCategory() {
         // console.log(response)
         
         if (response.ok) {
-            const resJson = await response.json();
-            console.log("resJson: ", resJson);
+            // const resJson = await response.json();
+            // console.log("resJson: ", resJson);
                 
-            // navigate('/authentification');
+            navigate('/admin');
         }
     };
 

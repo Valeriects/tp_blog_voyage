@@ -1,19 +1,26 @@
 // import { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faSquarePen } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 function TableCategories() {
+    const navigate = useNavigate();
     const { list } = useSelector((state) => state.category);
     
-    // async function deleteCategory(id) {
-    //         const response = await fetch(`http://localhost:8000/api/v1/category/delete/${id}`, {
-    //         method: "DELETE",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //     });
-    // }
+    async function deleteCategory(e, id) {
+            e.preventDefault();
+        try {
+            const response = await fetch(`http://localhost:8000/api/v1/category/delete/${id}`, {
+                method: "DELETE",
+            });
+            if (response.ok) {
+                navigate('/admin');
+            }
+
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     console.log(list);
     return (
@@ -37,8 +44,8 @@ function TableCategories() {
                                 <Link to={`/admin/modifier-categorie/${item?.id}`}><FontAwesomeIcon icon={faSquarePen} 
                                     className="iconeTable" /></Link>
                                 
-                                <Link to={`/admin/supprimer-categorie/${item?.id}`}><FontAwesomeIcon icon={faTrashCan} className="iconeTable" /></Link>
-                                {/* <button type="submit" onClick={deleteCategory(item?.id)}><FontAwesomeIcon icon={faTrashCan} className="iconeTable" /></button> */}
+                                {/* <Link to={`/admin/supprimer-categorie/${item?.id}`}><FontAwesomeIcon icon={faTrashCan} className="iconeTable" /></Link> */}
+                                <button type="submit" onClick={(e) =>deleteCategory(e,item.id)}><FontAwesomeIcon icon={faTrashCan} className="iconeTable" /></button>
                                 {/* <button type="submit" ><FontAwesomeIcon icon={faTrashCan} className="iconeTable" /></button> */}
                                 {/* <Link to={`/delete/${item.id}`}><FontAwesomeIcon icon={faTrashCan} className="iconeTable" /></Link> */}
                             </td>

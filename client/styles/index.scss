@@ -154,6 +154,16 @@ header {
         background-color: $bgLightOpacity;
         padding: 1rem;
 
+        .divInputSearch {
+            width: 100%;
+        
+            .inputSearch {
+                width: 100%;
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+
         article {
             border: 1px solid $colorDark;
             border-radius: .3rem;
@@ -406,6 +416,14 @@ footer {
         h1, h2, h3 {
             width: 100%;
         }
+        .divInputSearch {
+
+            text-align: center;
+
+            .inputSearch {
+                width: 50% !important;
+            }
+        }
 
         article {
             width: 30%;
@@ -414,9 +432,6 @@ footer {
     }
 
     .home {
-        h1{
-            width: 50%;
-        }
 
     #detailArticle {
         article {
